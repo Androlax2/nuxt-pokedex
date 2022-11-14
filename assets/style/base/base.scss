@@ -1,0 +1,107 @@
+@media screen and (max-device-width: 480px) {
+  body {
+    -webkit-text-size-adjust: none;
+  }
+}
+
+html {
+  font-size: calc((100% * 24 / 16));
+}
+
+*,
+*::before,
+*::after {
+  min-width: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: min(3vw, 1.5rem);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: break-word;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+svg {
+  max-width: 100%;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #FFF inset;
+}
+
+// Safari auto fill credentials color
+input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
+  background-color: #FFF;
+}
+
+small {
+  font-size: smaller;
+}
+
+sup {
+  font-size: smaller;
+  vertical-align: super;
+}
+
+sub {
+  font-size: smaller;
+  vertical-align: sub;
+}
+
+/* Prevent iOS from zooming in on input fields */
+@supports (-webkit-touch-callout: none) {
+  input[type='color'],
+  input[type='date'],
+  input[type='datetime'],
+  input[type='datetime-local'],
+  input[type='email'],
+  input[type='month'],
+  input[type='number'],
+  input[type='password'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='text'],
+  input[type='time'],
+  input[type='url'],
+  input[type='week'],
+  select,
+  select:focus,
+  textarea {
+    font-size: initial !important;
+  }
+}
