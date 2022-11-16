@@ -61,12 +61,12 @@ table {
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #FFF inset;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
 }
 
 // Safari auto fill credentials color
 input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 small {

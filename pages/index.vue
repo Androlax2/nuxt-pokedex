@@ -2,12 +2,7 @@
   <div>
     <Header />
     <PokemonSearch />
-    <PokemonCard
-      id="001"
-      :types="['Grass', 'Poison']"
-      image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-      name="Bulbasaur"
-    />
+    <PokemonCardsContainer />
   </div>
 </template>
 

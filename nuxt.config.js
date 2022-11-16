@@ -3,21 +3,19 @@ export default {
   head: {
     title: 'Pokedex NuxtJS',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
-      {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: ''},
-      {name: 'format-detection', content: 'telephone=no'}
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/style/app.scss'
-  ],
+  css: ['~/assets/style/app.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -31,19 +29,19 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
   ],
 
   // Google fonts families
   googleFonts: {
     families: {
-      Poppins: [400, 500, 700]
-    }
+      Poppins: [400, 500, 700],
+    },
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
-};
+  build: {},
+}

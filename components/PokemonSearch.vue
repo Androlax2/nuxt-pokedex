@@ -1,44 +1,52 @@
 <template>
-  <div
-    :class="{'focused': focused || search.length > 0}"
-  >
+  <div :class="{ focused: focused || search.length > 0 }">
     <input
       v-model="search"
       placeholder="Search ..."
       type="search"
       @blur="focused = false"
       @focus="focused = true"
-    >
+    />
     <button
       v-if="search.length > 0"
       title="Clear the search"
       @click="clearSearch"
     >
-      <img alt="Close" height="12" src="~/assets/icons/close.svg" width="12">
+      <img alt="Close" height="12" src="~/assets/icons/close.svg" width="12" />
     </button>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from 'vue-class-component';
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Watch } from 'vue-property-decorator'
+import { getModule } from 'vuex-module-decorators'
+import pokemons from '~/store/pokemons'
+import { Debounce } from '~/utils/decorator'
 
 @Component
 export default class PokemonSearch extends Vue {
-  search: string = '';
-  focused: boolean = false;
+  search: string = ''
+  focused: boolean = false
+  pokemonsStore = getModule(pokemons, this.$store)
+
+  @Watch('search')
+  @Debounce(50)
+  searchPokemon() {
+    this.pokemonsStore.setSearch(this.search)
+  }
 
   /**
    * Clear the search.
    */
   clearSearch(): void {
-    this.search = '';
+    this.search = ''
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
 div {
   --input-height: 1.5rem;
   --input-padding: 0.5rem;
@@ -77,18 +85,18 @@ input::placeholder {
   line-height: 1;
 }
 /* clears the 'X' from Internet Explorer */
-input[type=search]::-ms-clear,
-input[type=search]::-ms-reveal {
+input[type='search']::-ms-clear,
+input[type='search']::-ms-reveal {
   display: none;
   width: 0;
   height: 0;
 }
 
 /* clears the 'X' from Chrome */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
 
@@ -152,5 +160,4 @@ div.focused {
     transform: none;
   }
 }
-
 </style>

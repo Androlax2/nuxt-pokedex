@@ -2,7 +2,7 @@
   <div :style="cssProps" class="pokemon-card">
     <div class="pokemon-card__header">
       <p class="pokemon-card__id">#{{ id }}</p>
-      <img :alt="name" :src="image" class="pokemon-card__image">
+      <img :alt="name" :src="image" class="pokemon-card__image" />
     </div>
     <div class="pokemon-card__bottom">
       <p class="pokemon-card__name">{{ name }}</p>
@@ -11,43 +11,43 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from 'vue-class-component';
-import {Prop} from "vue-property-decorator";
-import {PokemonTypes} from "~/enums/PokemonTypes";
-import {getPokemonColorByType} from "~/utils";
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Prop } from 'vue-property-decorator'
+import { PokemonTypes } from '~/enums/PokemonTypes'
+import { getPokemonColorByType } from '~/utils'
 
 @Component
 export default class PokemonCard extends Vue {
-  @Prop({required: true, type: String}) readonly id!: string;
-  @Prop({required: true, type: String}) readonly name!: string;
-  @Prop({required: true, type: String}) readonly image!: string;
-  @Prop({required: true, type: Array}) readonly types!: PokemonTypes[];
+  @Prop({ required: true, type: Number }) readonly id!: string
+  @Prop({ required: true, type: String }) readonly name!: string
+  @Prop({ required: true, type: String }) readonly image!: string
+  @Prop({ required: true, type: Array }) readonly types!: PokemonTypes[]
 
   /**
    * Get the CSS props for the component.
    */
   get cssProps(): string {
-    return `--pokemon-color: ${this.color};`;
+    return `--pokemon-color: ${this.color};`
   }
 
   /**
    * Get the pokemon color based on the first type.
    */
   get color(): string {
-    return getPokemonColorByType(this.types[0]);
+    return getPokemonColorByType(this.types[0])
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .pokemon-card {
   --pokemon-card-border-radius: 0.6em;
   --pokemon-card-gap-between-items: 0.2em;
 
-  width: 6.25em;
+  width: 100%;
   overflow: hidden;
-  background-color: #FFF;
+  background-color: #fff;
   user-select: none;
 }
 
@@ -103,5 +103,4 @@ export default class PokemonCard extends Vue {
   border-bottom-left-radius: var(--pokemon-card-border-radius);
   border-bottom-right-radius: var(--pokemon-card-border-radius);
 }
-
 </style>
