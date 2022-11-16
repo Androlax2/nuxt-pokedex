@@ -8,7 +8,7 @@ let pokemonCard: Wrapper<PokemonCard>
 beforeEach(() => {
   pokemonCard = shallowMount(PokemonCard, {
     propsData: {
-      id: '001',
+      id: 1,
       name: 'Bulbasaur',
       image:
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',

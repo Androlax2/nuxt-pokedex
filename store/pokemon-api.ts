@@ -34,6 +34,6 @@ export async function fetchPokemons(): Promise<ApiPokemon[]> {
  * Fetch a pokemon with a given ID.
  */
 export async function fetchPokemon(id: number): Promise<ApiPokemon> {
-  const { json } = await fetch(`${baseApiUrl}/pokemon/${id}`)
-  return json()
+  const response = await fetch(`${baseApiUrl}/pokemon/${id}`);
+  return (await response.json()) as ApiPokemon;
 }

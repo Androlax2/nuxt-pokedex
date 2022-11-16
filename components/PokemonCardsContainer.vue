@@ -1,14 +1,12 @@
 <template>
   <div class="pokemon-cards-container">
     <div v-for="pokemon in pokemons" :key="pokemon.id">
-      <keep-alive>
-        <PokemonCard
-          :id="pokemon.id"
-          :image="pokemon.sprites.other['official-artwork'].front_default"
-          :name="pokemon.name"
-          :types="pokemon.types.map((type) => type.type.name)"
-        />
-      </keep-alive>
+      <PokemonCard
+        :id="pokemon.id"
+        :image="pokemon.sprites.other['official-artwork'].front_default"
+        :name="pokemon.name"
+        :types="pokemon.types.map((type) => type.type.name)"
+      />
     </div>
   </div>
 </template>
@@ -21,7 +19,7 @@ import pokemons from '~/store/pokemons'
 
 @Component
 export default class PokemonCardsContainer extends Vue {
-  pokemonsStore = getModule(pokemons, this.$store)
+  readonly pokemonsStore = getModule(pokemons, this.$store);
 
   get pokemons() {
     return this.pokemonsStore.filteredPokemonsList

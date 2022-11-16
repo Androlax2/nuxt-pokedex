@@ -1,7 +1,7 @@
 <template>
   <div :style="cssProps" class="pokemon-card">
     <div class="pokemon-card__header">
-      <p class="pokemon-card__id">#{{ id }}</p>
+      <p class="pokemon-card__id">#{{ formattedId }}</p>
       <img :alt="name" :src="image" class="pokemon-card__image" />
     </div>
     <div class="pokemon-card__bottom">
@@ -11,24 +11,31 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
-import { PokemonTypes } from '~/enums/PokemonTypes'
-import { getPokemonColorByType } from '~/utils'
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import {Prop} from 'vue-property-decorator';
+import {PokemonTypes} from '~/enums/PokemonTypes';
+import {getPokemonColorByType, transformIdToThreeDigits} from '~/utils';
 
 @Component
 export default class PokemonCard extends Vue {
-  @Prop({ required: true, type: Number }) readonly id!: string
-  @Prop({ required: true, type: String }) readonly name!: string
-  @Prop({ required: true, type: String }) readonly image!: string
-  @Prop({ required: true, type: Array }) readonly types!: PokemonTypes[]
+  @Prop({required: true, type: Number}) readonly id!: number;
+  @Prop({required: true, type: String}) readonly name!: string;
+  @Prop({required: true, type: String}) readonly image!: string;
+  @Prop({required: true, type: Array}) readonly types!: PokemonTypes[];
 
   /**
    * Get the CSS props for the component.
    */
   get cssProps(): string {
-    return `--pokemon-color: ${this.color};`
+    return `--pokemon-color: ${this.color};`;
+  }
+
+  /**
+   * Get the formatted ID.
+   */
+  get formattedId(): string {
+    return transformIdToThreeDigits(this.id);
   }
 
   /**
